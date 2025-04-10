@@ -1,0 +1,42 @@
+#include<bits/stdc++.h>
+#include<ext/pb_ds/assoc_container.hpp> 
+#include<ext/pb_ds/tree_policy.hpp>
+#define ordered_set tree<int , null_type,less<int> , rb_tree_tag,tree_order_statistics_node_update>
+#define ll long long int
+#define endl '\n'
+#define f first
+#define s second
+using namespace std;
+using namespace __gnu_pbds; 
+const double PI = acos(-1);
+const int mod = 1e9 + 7;
+const int inf = INT_MAX;
+const int _inf = INT_MIN;
+
+int32_t main(){
+    ios_base::sync_with_stdio(0);
+    cin.tie(NULL); cout.tie(NULL);
+
+    int tc = 1; cin >> tc;
+    while(tc--){
+    	int n; cin >> n;
+    	vector<int>a(n);
+    	for(auto &i : a){
+    		cin >> i;
+    	}
+    	bool st = 0;
+    	int cnt = 0;
+    	for(int i = 0 ; i < n;i++){
+    		if(a[i] > 0){
+    			st = 1;
+    		}
+    		if(a[i] == 0 and st){
+    			cnt++;
+    			st = 0;
+    		}
+    	}
+    	if(st == 1) cnt++;	
+    	cout<<min(2 , cnt)<<endl;
+    }
+    return 0;
+}

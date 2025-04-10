@@ -1,0 +1,1 @@
+{"name":"Local: 1850F","url":"c:\\Users\\USER\\OneDrive\\sublime\\1850F.cpp","tests":[{"id":1719976723214,"input":"1\n5\n5 4 3 1 6","output":"2"},{"id":1719983664378,"input":"","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\USER\\OneDrive\\sublime\\1850F.cpp","group":"local","local":true}

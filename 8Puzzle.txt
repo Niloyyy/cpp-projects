@@ -1,0 +1,47 @@
+1. Define initial_state and goal_state
+   initial_state = [...]
+   goal_state = [...]
+
+2. Define heuristic function h(state)
+   function h(state):
+       return number of misplaced tiles or Manhattan distance
+
+3. Initialize open_set and closed_set
+   open_set = PriorityQueue()
+   closed_set = set()
+
+   open_set.add((h(initial_state), initial_state, None, 0, h(initial_state)))
+
+4. While open_set is not empty:
+   while not open_set.is_empty():
+       current = open_set.pop()
+       current_state, current_parent, current_g, current_h = current.state, current.parent, current.g, current.h
+
+       if current_state == goal_state:
+           return reconstruct_path(current)
+
+       closed_set.add(current_state)
+
+       for move in possible_moves(current_state):
+           neighbor_state = apply_move(current_state, move)
+           if neighbor_state in closed_set:
+               continue
+
+           g_neighbor = current_g + 1
+           h_neighbor = h(neighbor_state)
+           priority_neighbor = g_neighbor + h_neighbor
+
+           if neighbor_state not in open_set or priority_neighbor < open_set.get_priority(neighbor_state):
+               open_set.add_or_update((priority_neighbor, neighbor_state, current, g_neighbor, h_neighbor))
+
+5. If open_set is empty:
+   return "Failure: No solution found"
+
+6. Function to reconstruct the path:
+   function reconstruct_path(state):
+       path = []
+       while state is not None:
+           path.append(state.state)
+           state = state.parent
+       path.reverse()
+       return path
